@@ -1,0 +1,67 @@
+.hader-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 0;
+}
+
+.header-left {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.header-left img {
+    height: 5rem;
+    margin-left: 14rem;
+    cursor: pointer;
+}
+
+.header-right {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+
+
+}
+
+.header-right .navbar {
+    margin-right: 14rem;
+    display: flex;
+    align-items: center;
+}
+
+.header-right .navbar li {
+    margin-right: 5rem;
+    cursor: pointer;
+}
+
+.header-right li:last-child {
+    margin-right: 0;
+}
+
+.header-right li .fa-cart-plus {
+    font-size: 2.3rem;
+}
+
+.header-right li .fa-cart-plus:hover {
+    color: #da0839
+}
+
+.header-right li .btn-login:hover {
+    color: #da0839
+}
+
+.header-right li .btn-signup {
+    background-color: #da0839;
+    font-size: 1.8rem;
+    color: #ffffff;
+    padding: 1rem 2.5rem;
+    border: 0;
+    border-radius: 3rem;
+    cursor: pointer;
+}
+
+.header-right li .btn-signup:hover {
+    color: #000000;
+
+}
