@@ -12,3 +12,19 @@ body {
 li {
   list-style: none;
 }
+
+.btn-primary {
+  background-color: #da0839;
+  font-size: 1.8rem;
+  color: #ffffff;
+  padding: 1rem 2.5rem;
+  border: 0;
+  border-radius: 3rem;
+  cursor: pointer;
+}
+
+button:focus,
+input:focus {
+  outline-style: none;
+  border: none;
+}
