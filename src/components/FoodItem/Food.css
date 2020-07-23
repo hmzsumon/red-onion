@@ -1,7 +1,10 @@
 .food-wrapper {
+    max-width: 114rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    margin: 0 auto;
+
 }
 
 .food-menu {
@@ -24,7 +27,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 0 10rem;
+    align-items: center;
+    padding: .5rem;
 }
 
 .food-container {

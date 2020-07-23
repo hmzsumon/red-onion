@@ -1,0 +1,106 @@
+.chooseUs-wrapper {
+    max-width: 114rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+
+}
+
+.chooseUs-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.chooseUs-content1 {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-right: 4rem;
+
+}
+
+.chooseUs-content1 h2 {
+    margin: 0;
+    font-size: 3.5rem;
+    font-weight: 500;
+    letter-spacing: .1rem;
+}
+
+.chooseUs-text {
+    font-size: 1.3rem;
+
+}
+
+.chooseUs-content2 {
+    display: flex;
+    flex: 1;
+}
+
+.chooseUs-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 2rem;
+}
+
+.chooseUs-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 35rem;
+    height: auto;
+    margin-right: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+
+}
+
+.chooseUs-item:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.chooseUs-item li {
+    margin-right: 1.5rem;
+    margin: 3rem 0;
+}
+
+.chooseUs-item li:first-child img {
+    width: 35rem;
+}
+
+.chooseUs-item li:last-child {
+    display: flex;
+
+}
+
+.chooseUs-item li:last-child div {
+    margin-right: 1rem;
+}
+
+.chooseUs-item li:last-child h5,
+h6 {
+    margin: 0;
+    margin-bottom: .5rem;
+
+}
+
+.chooseUs-item li:last-child h5 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: .1rem;
+}
+
+.chooseUs-item li:last-child h6 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: .3rem;
+}
+
+.chooseUs-item li:last-child p {
+    font-size: 1.3rem;
+    margin-top: 0;
+}
