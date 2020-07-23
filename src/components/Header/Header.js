@@ -11,7 +11,9 @@ const Header = () => {
       <div className="header-right">
         <ul className="navbar">
           <li>
-            <i className="fa fa-cart-plus" aria-hidden="true"></i>
+            <i className="fa fa-cart-plus" aria-hidden="true">
+              <span className="cartItemCount">10</span>
+            </i>
           </li>
           <li>
             <span className="btn-login">Login</span>

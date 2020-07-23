@@ -1,9 +1,15 @@
 .hader-wrapper {
     display: flex;
     flex-wrap: wrap;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
+    border-bottom: .1rem solid #f3f3f3;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #ffffff;
 }
 
+/* header-left */
 .header-left {
     display: flex;
     flex: 1;
@@ -12,10 +18,19 @@
 
 .header-left img {
     height: 5rem;
-    margin-left: 14rem;
+    margin-left: 10%;
     cursor: pointer;
 }
 
+@media only screen and (max-width: 580px) {
+    .header-left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* header-right */
 .header-right {
     display: flex;
     flex: 1;
@@ -45,6 +60,24 @@
 
 .header-right li .fa-cart-plus:hover {
     color: #da0839
+}
+
+.cartItemCount {
+    position: absolute;
+    height: 1.8rem;
+    width: 1.8rem;
+    background: #f91a45;
+    text-align: center;
+    line-height: 1.8rem;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 50%;
+    margin-left: .1rem;
+    margin-top: 1rem;
+    padding: .1rem;
+
+
 }
 
 .header-right li .btn-login:hover {
