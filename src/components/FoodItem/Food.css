@@ -1,0 +1,106 @@
+.food-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.food-menu {
+    display: flex;
+    justify-content: center;
+}
+
+.food-menu li {
+    margin: 1rem 2rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.active {
+    border-bottom: 2px solid #e51a4b;
+    color: #e51a4b;
+}
+
+.food-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10rem;
+}
+
+.food-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 28rem;
+    height: 35rem;
+    padding: 2.5rem;
+    margin: 1rem 2rem;
+    cursor: pointer;
+}
+
+.food-container:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.food-container img {
+    width: 21rem;
+    height: 20rem;
+}
+
+.food-container h2 {
+    margin-bottom: 0;
+    text-align: center;
+    font-weight: 500;
+}
+
+.food-container h4 {
+    margin-top: 0;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.checkout-btn-aria {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.checkout-btn {
+    background-color: #80808066;
+    color: #fff;
+    padding: 1rem 5rem;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    color: #212529;
+}
+
+.food-container li:first-child {
+    position: relative;
+}
+
+.hover-content {
+    position: absolute;
+    left: -6rem;
+    top: .5rem;
+    opacity: 0;
+}
+
+.hover-content button {
+    background: #f91a45;
+    color: #fff !important;
+    padding: .5rem;
+    font-size: 2rem;
+    font-weight: 400 !important;
+    border: none;
+    width: 4rem;
+    cursor: pointer;
+}
+
+.food-container:hover .hover-content {
+    left: -4rem;
+    opacity: 1;
+    transition: 0.4s all ease-in-out;
+}
