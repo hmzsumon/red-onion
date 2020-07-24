@@ -3,8 +3,8 @@ import './App.css';
 import Header from './components/Header/Header';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './components/Page/HomePage';
-import SignUp from '../src/components/auth/SignUp/SignUp'
-import Login from '../src/components/auth/Login/Login'
+import SignUp from '../src/components/auth/SignUp/SignUp';
+import Login from '../src/components/auth/Login/Login';
 import Cart from './components/Cart/Cart';
 import NotFoundPage from './components/Page/NotFoundPage';
 import FoodDetails from './components/Food/FoodDetails';
@@ -14,35 +14,36 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Checkout from './components/Cart/Checkout';
 import Foods from './components/Page/Foods';
 import { toast } from 'react-toastify';
+import Inventory from './components/Header/Inventory';
 
 toast.configure({
- autoClose: 1000,
- draggable: false,
-      
+  autoClose: 1000,
+  draggable: false,
 });
 
 function App() {
   return (
-   <UserProvider>
-    <Header/>
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/signup" component={SignUp} />  
-      <Route path="/login" component={Login} />
-      <PrivateRoute path="/cart">
-            <Cart />
-      </PrivateRoute>
-      <PrivateRoute path="/checkout">
-            <Checkout />
-      </PrivateRoute>
-      <Route exact path="/foods/" component={Foods} />
-      <Route path="/foods/:id" component={FoodDetails} />
-      <PrivateRoute path="/user/profile">
-            <UserProfile />
-      </PrivateRoute>
-      <Route path="*" component={NotFoundPage} />
-    </Switch>
-   </UserProvider>
+    <UserProvider>
+      <Header />
+      <Inventory></Inventory>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={Login} />
+        <PrivateRoute path="/cart">
+          <Cart />
+        </PrivateRoute>
+        <PrivateRoute path="/checkout">
+          <Checkout />
+        </PrivateRoute>
+        <Route exact path="/foods/" component={Foods} />
+        <Route path="/foods/:id" component={FoodDetails} />
+        <PrivateRoute path="/user/profile">
+          <UserProfile />
+        </PrivateRoute>
+        <Route path="*" component={NotFoundPage} />
+      </Switch>
+    </UserProvider>
   );
 }
 
