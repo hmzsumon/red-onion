@@ -1,100 +1,13 @@
-.hader-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1rem 0;
-    border-bottom: .1rem solid #f3f3f3;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background-color: #ffffff;
+.logo-aria {
+	width: 35%;
+	margin: 15px;
 }
-
-/* header-left */
-.header-left {
-    display: flex;
-    flex: 1;
-    align-items: center;
+.header-right div.d-flex {
+	flex-flow: row-reverse;
 }
-
-.header-left img {
-    height: 5rem;
-    margin-left: 10%;
-    cursor: pointer;
+.header-right div.d-flex button {
+	margin: 15px;
 }
-
-@media only screen and (max-width: 580px) {
-    .header-left {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-/* header-right */
-.header-right {
-    display: flex;
-    flex: 1;
-    justify-content: flex-end;
-
-
-}
-
-.header-right .navbar {
-    margin-right: 14rem;
-    display: flex;
-    align-items: center;
-}
-
-.header-right .navbar li {
-    margin-right: 5rem;
-    cursor: pointer;
-}
-
-.header-right li:last-child {
-    margin-right: 0;
-}
-
-.header-right li .fa-cart-plus {
-    font-size: 2.3rem;
-}
-
-.header-right li .fa-cart-plus:hover {
-    color: #da0839
-}
-
-.cartItemCount {
-    position: absolute;
-    height: 1.8rem;
-    width: 1.8rem;
-    background: #f91a45;
-    text-align: center;
-    line-height: 1.8rem;
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: 600;
-    border-radius: 50%;
-    margin-left: .1rem;
-    margin-top: 1rem;
-    padding: .1rem;
-
-
-}
-
-.header-right li .btn-login:hover {
-    color: #da0839
-}
-
-.header-right li .btn-signup {
-    background-color: #da0839;
-    font-size: 1.8rem;
-    color: #ffffff;
-    padding: 1rem 2.5rem;
-    border: 0;
-    border-radius: 3rem;
-    cursor: pointer;
-}
-
-.header-right li .btn-signup:hover {
-    color: #000000;
-
+.signup-btn:hover {
+	color: #fff;
 }
