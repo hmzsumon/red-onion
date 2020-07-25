@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { UserContext } from '../auth/useAuth';
-import InputItem from '../auth/InputItem/InputItem'
-import './Cart.css'
+import InputItem from '../auth/InputItem/InputItem';
+import './Cart.css';
 import CartItem from './CartItem';
 import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -9,113 +9,109 @@ import Stripe from '../utils/Stripe';
 import Loading from '../utils/Loading';
 
 const Cart = (props) => {
-  const { cart, checkOutOrder, user, setCart } = useContext(UserContext)
+  const { cart, checkOutOrder, user, setCart } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [isShiping, setIsShiping] = useState(false)
+  const [isShiping, setIsShiping] = useState(false);
 
-  const [address, setAddress] = useState('')
-  const [homeNo, setHomeNo] = useState('')
-  const [flatNo, setFlatNo] = useState('')
-  const [name, setName] = useState('')
-  const [instruction, setInstruction] = useState('')
-  const [deliveryFee] = useState(2)
-  const [tax] = useState(5)
-  const [subTotal, setSubTotal] = useState(5)
-  const [payInfo, setPayInfo] = useState(null)
-  const [isPay, setIsPay] = useState(true)
-  const [isPayed, setIsPayed] = useState(false)
+  const [address, setAddress] = useState('');
+  const [homeNo, setHomeNo] = useState('');
+  const [flatNo, setFlatNo] = useState('');
+  const [name, setName] = useState('');
+  const [instruction, setInstruction] = useState('');
+  const [deliveryFee] = useState(2);
+  const [tax] = useState(5);
+  const [subTotal, setSubTotal] = useState(5);
+  const [payInfo, setPayInfo] = useState(null);
+  const [isPay, setIsPay] = useState(true);
+  const [isPayed, setIsPayed] = useState(false);
   useEffect(() => {
     async function getCarts() {
-      
       if (user) {
-        setIsLoading(true)
+        setIsLoading(true);
         try {
-          const response = await axios.get(`https://hot-onion.herokuapp.com/api/v1/carts/${user._id}`);
-          setIsLoading(false)
-          if( response.data.data.cart.length > 0) {
-            console.log('form cart componetss single item', response.data.data.cart);
-            setCart(response.data.data.cart[0].carts)
+          const response = await axios.get(
+            `https://red-onion03.herokuapp.com/api/carts/${user._id}`
+          );
+          setIsLoading(false);
+          if (response.data.data.cart.length > 0) {
+            console.log(
+              'form cart componetss single item',
+              response.data.data.cart
+            );
+            setCart(response.data.data.cart[0].carts);
           } else {
             console.log('form cart componetss', response.data.data.cart);
-            setCart(response.data.data.cart)
+            setCart(response.data.data.cart);
           }
-          setIsLoading(false)
+          setIsLoading(false);
         } catch (error) {
-          setIsLoading(false)
-          console.log('cart components',error)
+          setIsLoading(false);
+          console.log('cart components', error);
         }
       }
     }
-    getCarts()
-  }, [])
-
-  useEffect(()=>{
-    if(payInfo) {
-      setIsPay(false)
-      setIsPayed(true)
-    }
-  },[payInfo])
-
-  const handlePayInfo= info => {
-    setPayInfo(info)
-  }
+    getCarts();
+  }, []);
 
   useEffect(() => {
-    let totalPrice = cart.reduce((total, item) => total + item.proTotalPrice, 0)
-    setSubTotal(totalPrice)
-  }, [cart])
+    if (payInfo) {
+      setIsPay(false);
+      setIsPayed(true);
+    }
+  }, [payInfo]);
 
-  const [disabled, setDisabled] = useState(false)
+  const handlePayInfo = (info) => {
+    setPayInfo(info);
+  };
+
+  useEffect(() => {
+    let totalPrice = cart.reduce(
+      (total, item) => total + item.proTotalPrice,
+      0
+    );
+    setSubTotal(totalPrice);
+  }, [cart]);
+
+  const [disabled, setDisabled] = useState(false);
   useEffect(() => {
     if (name && homeNo && flatNo && instruction && address && isShiping) {
-      setDisabled(false)
+      setDisabled(false);
     } else {
-      setDisabled(true)
+      setDisabled(true);
     }
-  }, [address, homeNo, flatNo, name, instruction, isShiping])
+  }, [address, homeNo, flatNo, name, instruction, isShiping]);
 
-  // useEffect(()=>{
-  //   if(isShiping) {
-  //     console.log(isShiping);
-      
-  //     setDisabled(true)
-  //   } else {
-  //     setDisabled(false)
-  //   }
-  // },[setIsShiping])
-
-  // input field handler
-  const onchangeHandler = e => {
+  const onchangeHandler = (e) => {
     const { name, value } = e.target;
     if (name === 'address') {
-      setAddress(value)
+      setAddress(value);
     }
     if (name === 'homeNo') {
-      setHomeNo(value)
+      setHomeNo(value);
     }
     if (name === 'flatNo') {
-      setFlatNo(value)
+      setFlatNo(value);
     }
     if (name === 'name') {
-      setName(value)
+      setName(value);
     }
     if (name === 'instrunCiton') {
-      setInstruction(value)
+      setInstruction(value);
     }
-  }
-  useEffect(() =>{
-    setName(user.displayName)
-  },[user])
-
-
+  };
+  useEffect(() => {
+    setName(user.displayName);
+  }, [user]);
 
   const handleCheckout = async () => {
-    setIsLoading(true)
+    setIsLoading(true);
     try {
-     
-      const cartIds = cart.map(i => i._id);
-    
-      const res = await axios.put(`https://hot-onion.herokuapp.com/api/v1/carts/deletes/${user._id}`, cartIds)
+      const cartIds = cart.map((i) => i._id);
+
+      const res = await axios.put(
+        `https://red-onion03.herokuapp.com/api/carts/deletes/${user._id}`,
+        cartIds
+      );
 
       const shippingInfo = {
         address,
@@ -126,111 +122,157 @@ const Cart = (props) => {
         cart,
         user: user._id,
         subTotal,
-        payInfo
-      }
-      let orderResult = await axios.post(`https://hot-onion.herokuapp.com/api/v1/orders`, shippingInfo)
+        payInfo,
+      };
+      let orderResult = await axios.post(
+        `https://red-onion03.herokuapp.com/api/orders`,
+        shippingInfo
+      );
       console.log(orderResult.data.data.order._id);
-      setIsLoading(false)
-      props.history.push(`/checkout?orderId=${orderResult.data.data.order._id}`)
+      setIsLoading(false);
+      props.history.push(
+        `/checkout?orderId=${orderResult.data.data.order._id}`
+      );
       checkOutOrder();
-      
     } catch (error) {
-      setIsLoading(false)
-      alert('Please place order again!')
+      setIsLoading(false);
+      alert('Please place order again!');
     }
+  };
+  const hanleSubmit = (e) => {
+    e.preventDefault();
+    setIsShiping(true);
+  };
 
+  if (isLoading) {
+    return <Loading />;
   }
-  const hanleSubmit = e => {
-    e.preventDefault()
-    setIsShiping(true)
-  }
 
-  if(isLoading) {
-    return <Loading/>
-  }
-
-if(cart.length==0) {
-      return (
-    <div className="container pt-5 mt-5 text-center">
-      <h1 className="text-center">You have no item</h1>
-      <Link to="/foods" className="text-danger">See our foods.</Link>
-    </div>
-  )
-} else {
-  return (
-    <div className="container pt-5 mt-5">
-      <div className="row d-flex justify-content-between">
-        <div className="col-md-5">
-          <div className="delivery-details">
-            <h3>Edit Delivery Details </h3>
-          </div>
-
-          <form onSubmit={hanleSubmit}>
-            <InputItem name="address"
-              type="text" placeholder="Deliver to door"
-              onchangeHandler={onchangeHandler} value={address} />
-            <InputItem name="homeNo"
-              type="text" placeholder="107 RD No 12"
-              onchangeHandler={onchangeHandler} value={homeNo} />
-            <InputItem name="flatNo"
-              type="text" placeholder="Flat, suite or flor"
-              onchangeHandler={onchangeHandler} value={flatNo} />
-            <InputItem name="name"
-             
-              type="text" placeholder="Business Name "
-              onchangeHandler={onchangeHandler} value={name} />
-            <div className="form-group">
-              <textarea className="form-control"
-                onChange={onchangeHandler}
-                value={instruction}
-                name="instrunCiton"
-                placeholder="Add Delivery Instruction " rows="3"></textarea>
+  if (cart.length == 0) {
+    return (
+      <div className="container pt-5 mt-5 text-center">
+        <h1 className="text-center">You have no item</h1>
+        <Link to="/foods" className="text-danger">
+          See our foods.
+        </Link>
+      </div>
+    );
+  } else {
+    return (
+      <div className="container pt-5 mt-5">
+        <div className="row d-flex justify-content-between">
+          <div className="col-md-5">
+            <div className="delivery-details">
+              <h3>Edit Delivery Details </h3>
             </div>
-            <button type="submit" className="btn sign-up-btn w-100">Save and Continue</button>
-          </form>
-          <div className="m-4">
-            <Stripe  disabled={disabled} handlePayInfo={handlePayInfo} />
-          </div>
-        </div>
-        <div className="col-md-5 f-right">
-          <div className="final-order-aria">
-            <h5 className="resturant-name">From <span>Gulshan Plazza GPR</span> </h5>
-            <h6>Arriving in 20-30 minutes</h6>
-            <div className="orders-items-aria">
 
-              {cart.map(item => <CartItem item={item} key={item._id} payMendInfo={isPayed}  />)}
-
+            <form onSubmit={hanleSubmit}>
+              <InputItem
+                name="address"
+                type="text"
+                placeholder="Deliver to door"
+                onchangeHandler={onchangeHandler}
+                value={address}
+              />
+              <InputItem
+                name="homeNo"
+                type="text"
+                placeholder="107 RD No 12"
+                onchangeHandler={onchangeHandler}
+                value={homeNo}
+              />
+              <InputItem
+                name="flatNo"
+                type="text"
+                placeholder="Flat, suite or flor"
+                onchangeHandler={onchangeHandler}
+                value={flatNo}
+              />
+              <InputItem
+                name="name"
+                type="text"
+                placeholder="Business Name "
+                onchangeHandler={onchangeHandler}
+                value={name}
+              />
+              <div className="form-group">
+                <textarea
+                  className="form-control"
+                  onChange={onchangeHandler}
+                  value={instruction}
+                  name="instrunCiton"
+                  placeholder="Add Delivery Instruction "
+                  rows="3"
+                ></textarea>
+              </div>
+              <button type="submit" className="btn sign-up-btn w-100">
+                Save and Continue
+              </button>
+            </form>
+            <div className="m-4">
+              <Stripe disabled={disabled} handlePayInfo={handlePayInfo} />
             </div>
-            <div className="order-price-aira">
-              <div className="cart-item">
-                <div className="row">
-                  <div className="col-md-8">
-                    <h5>Subtotal: </h5>
-                    <h5>Tax:</h5>
-                    <h5>Deliver fee:</h5>
-                    <h5>Total:</h5>
+          </div>
+          <div className="col-md-5 f-right">
+            <div className="final-order-aria">
+              <h5 className="resturant-name">
+                From <span>Gulshan Plazza GPR</span>{' '}
+              </h5>
+              <h6>Arriving in 20-30 minutes</h6>
+              <div className="orders-items-aria">
+                {cart.map((item) => (
+                  <CartItem item={item} key={item._id} payMendInfo={isPayed} />
+                ))}
+              </div>
+              <div className="order-price-aira">
+                <div className="cart-item">
+                  <div className="row">
+                    <div className="col-md-8">
+                      <h5>Subtotal: </h5>
+                      <h5>Tax:</h5>
+                      <h5>Deliver fee:</h5>
+                      <h5>Total:</h5>
+                    </div>
+                    <div className="col-md-4 status">
+                      <h5>
+                        ${' '}
+                        <span id="sub-total-price">{subTotal.toFixed(2)}</span>{' '}
+                      </h5>
+                      <h5>
+                        $ <span> {tax}.00</span>{' '}
+                      </h5>
+                      <h5>
+                        $ <span>{deliveryFee}.00</span>{' '}
+                      </h5>
+                      <h5>
+                        ${' '}
+                        <span id="total-price">
+                          {(subTotal + tax + deliveryFee).toFixed(2)}
+                        </span>{' '}
+                      </h5>
+                    </div>
                   </div>
-                  <div className="col-md-4 status">
-                    <h5>$ <span id="sub-total-price">{subTotal.toFixed(2)}</span> </h5>
-                    <h5>$ <span> {tax}.00</span> </h5>
-                    <h5>$ <span>{deliveryFee}.00</span> </h5>
-                    <h5>$ <span id="total-price">{(subTotal + tax + deliveryFee).toFixed(2)}</span> </h5>
-                  </div>
+                  <button
+                    type="submit"
+                    disabled={isPay}
+                    className={
+                      isPay
+                        ? 'btn place-order-btn-disable'
+                        : 'btn sign-up-btn w-100'
+                    }
+                    // className="btn sign-up-btn w-100"
+                    onClick={handleCheckout}
+                  >
+                    Place Order
+                  </button>
                 </div>
-                <button
-                  type="submit"
-                  disabled={isPay}
-                  className={isPay ? 'btn place-order-btn-disable' : 'btn sign-up-btn w-100'}
-                  // className="btn sign-up-btn w-100" 
-                  onClick={handleCheckout} >Place Order</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 };
 
 export default withRouter(Cart);

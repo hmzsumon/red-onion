@@ -14,7 +14,6 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Checkout from './components/Cart/Checkout';
 import Foods from './components/Page/Foods';
 import { toast } from 'react-toastify';
-import Inventory from './components/Header/Inventory';
 
 toast.configure({
   autoClose: 1000,
@@ -25,7 +24,6 @@ function App() {
   return (
     <UserProvider>
       <Header />
-      <Inventory></Inventory>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/signup" component={SignUp} />

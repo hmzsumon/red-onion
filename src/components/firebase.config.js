@@ -1,12 +1,11 @@
- const firebaseConfig = {
-  apiKey: "AIzaSyBBJutfQyeKcpXzBMtwnR-oVfjE52k1ycg",
-  authDomain: "e-restaurant-27e3c.firebaseapp.com",
-  databaseURL: "https://e-restaurant-27e3c.firebaseio.com",
-  projectId: "e-restaurant-27e3c",
-  storageBucket: "e-restaurant-27e3c.appspot.com",
-  messagingSenderId: "775972226674",
-  appId: "1:775972226674:web:38e8b11db66079c1a1e4eb",
-  measurementId: "G-YV97PHHLX1"
+const firebaseConfig = {
+  apiKey: 'AIzaSyA_eXfWoDepjtsINyxZyd8Gnt3xd1umbnw',
+  authDomain: 'red-onion-7070.firebaseapp.com',
+  databaseURL: 'https://red-onion-7070.firebaseio.com',
+  projectId: 'red-onion-7070',
+  storageBucket: 'red-onion-7070.appspot.com',
+  messagingSenderId: '694123085199',
+  appId: '1:694123085199:web:73e6e6b41c0331601a9ffa',
 };
-export const STRIPE_APIKEY = `pk_test_Oo2HHpANmwwZboKUf7S5z9Gf00i0PqRRBD`;
+export const STRIPE_APIKEY = `pk_test_51H5aTtERG3pC1iKYYA7blXv14MVLsZlUY1BC8hexOrpzEWFdi09R3361Phnj4pS7Sls0fqySkiYdX1fZ7PtOCued00aq3Vb5wn`;
 export default firebaseConfig;

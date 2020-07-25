@@ -4,7 +4,7 @@ function Inventory() {
   const hndleAddProduct = () => {
     const product = foodData;
     console.log(product);
-    fetch('http://localhost:4500/api/v1/foods', {
+    fetch('https://red-onion03.herokuapp.com/api/v1/foods', {
       method: 'POST',
       body: JSON.stringify(product),
       headers: {

@@ -3,26 +3,21 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBBJutfQyeKcpXzBMtwnR-oVfjE52k1ycg",
-  authDomain: "e-restaurant-27e3c.firebaseapp.com",
-  databaseURL: "https://e-restaurant-27e3c.firebaseio.com",
-  projectId: "e-restaurant-27e3c",
-  storageBucket: "e-restaurant-27e3c.appspot.com",
-  messagingSenderId: "775972226674",
-  appId: "1:775972226674:web:38e8b11db66079c1a1e4eb",
-  measurementId: "G-YV97PHHLX1"
+  apiKey: 'AIzaSyA_eXfWoDepjtsINyxZyd8Gnt3xd1umbnw',
+  authDomain: 'red-onion-7070.firebaseapp.com',
+  databaseURL: 'https://red-onion-7070.firebaseio.com',
+  projectId: 'red-onion-7070',
+  storageBucket: 'red-onion-7070.appspot.com',
+  messagingSenderId: '694123085199',
+  appId: '1:694123085199:web:73e6e6b41c0331601a9ffa',
 };
-
-firebase.initializeApp(firebaseConfig)
-export const auth = firebase.auth()
-export const firestore = firebase.firestore()
+firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GithubAuthProvider();
-provider.setCustomParameters({prompt:'Select a Account'})
+provider.setCustomParameters({ prompt: 'Select a Account' });
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
-
-
-
 
 export default firebase;

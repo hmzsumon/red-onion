@@ -1,11 +1,15 @@
-jub-red-onion
----------------
-https://assignment-readonion-react.firebaseapp.com/
+
+app-link
+--------
+https://red-onion-7070.web.app/
 
 email
 ----------
 redonion7070@gmail.com
 
+heroku-link
+-----------
+https://red-onion03.herokuapp.com/
 
 image link
 -------------

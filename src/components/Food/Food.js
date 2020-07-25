@@ -14,9 +14,9 @@ const Food = (props) => {
     async function getFoods() {
       try {
         const response = await axios.get(
-          'https://hot-onion.herokuapp.com/api/v1/foods'
+          'https://red-onion03.herokuapp.com/api/foods'
         );
-        console.log(response.data.data.foods);
+
         setFoods(response.data.data.foods);
       } catch (error) {
         console.error(error);
@@ -28,13 +28,11 @@ const Food = (props) => {
   // fetch carts
   // fetch cart data
   useEffect(() => {
-    console.log('forn food js');
-
     async function getCarts() {
       if (user) {
         try {
           const response = await axios.get(
-            `https://hot-onion.herokuapp.com/api/v1/carts/${user._id}`
+            `https://red-onion03.herokuapp.com/api/carts/${user._id}`
           );
           if (response.data.data.cart.length > 0) {
             setCart(response.data.data.cart[0].carts);
