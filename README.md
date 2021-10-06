@@ -2,6 +2,12 @@
 
 A full-stack e-commerce restaurant app where a user can order their favorite food from the menu. Users can see all his current orders status, orders history, and order detail from his dashboard. Admin can see all order data, change the order status, add products and add another as an admin from his dashboard.
 
+<br>
+<br>
+
+- Live Demo: https://red-onion-6de15.web.app/
+- Source Code: https://github.com/hmzsumon/red-onion
+
 ## Technologies
 
 ![](https://img.shields.io/static/v1?label=&message=HTML&color=red)
